@@ -131,7 +131,7 @@ export default function Slider() {
                         className="text-white hover:bg-accent duration-300 focus:outline-none "
                         onClick={() => {
                           document
-                            .getElementById("form")
+                            .getElementById("hero")
                             ?.scrollIntoView({ behavior: "smooth" });
                         }}
                       >

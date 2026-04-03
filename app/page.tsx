@@ -1,10 +1,12 @@
 import About from "@/components/ui/About";
 import Advantages from "@/components/ui/Advantages";
+import Footer from "@/components/ui/Footer";
 import Form from "@/components/ui/Form";
 import Header from "@/components/ui/Header";
 import Hero from "@/components/ui/Hero";
 import Services from "@/components/ui/Services";
 import Slider from "@/components/ui/Slider";
+import SliderNews from "@/components/ui/SliderNews";
 
 
 export default function Home() {
@@ -17,6 +19,8 @@ export default function Home() {
     <Advantages />
     <Slider />
     <Form />
+    <SliderNews />
+    <Footer />
   </main>
   );
 }
