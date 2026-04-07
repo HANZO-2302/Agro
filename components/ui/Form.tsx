@@ -128,9 +128,9 @@
 "use client";
 
 import Image from "next/image";
-import { useForm } from "react-hook-form";
+import { useForm, useWatch, type SubmitHandler } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { z } from "zod";
+import { z } from "zod/v3";
 import { toast } from "sonner";
 import { Checkbox } from "@/components/ui/checkbox";
 import {
@@ -160,17 +160,23 @@ const schema = z.object({
   }),
 });
 
-async function sendMail(data) {
+type FormValues = z.infer<typeof schema>;
+
+type SendMailError = {
+  message?: string;
+};
+
+async function sendMail(data: FormValues) {
   const res = await fetch("/api/contact", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(data),
   });
   if (!res.ok) {
-    const err = await res.json().catch(() => ({}));
+    const err = (await res.json().catch(() => ({}))) as SendMailError;
     throw new Error(err.message || "Ошибка отправки");
   }
-  return res.json();
+  return (await res.json()) as { success: boolean };
 }
 
 // ─── Component ─────────────────────────────────────────────────────────────────
@@ -180,25 +186,36 @@ export default function Form() {
     handleSubmit,
     reset,
     setValue,
-    watch,
+    control,
+    // watch,
     formState: { errors, isSubmitting },
-  } = useForm({
+  } = useForm<FormValues>({
     resolver: zodResolver(schema),
-    defaultValues: { name: "", phone: "", email: "", message: "", terms: false },
+    defaultValues: {
+      name: "",
+      phone: "",
+      email: "",
+      message: "",
+      terms: false,
+    },
   });
+  // const termsValue = watch("terms");
+  const termsValue = useWatch({ control, name: "terms" }) ?? false;
 
-  const termsValue = watch("terms");
-
-  const onSubmit = async (data) => {
+  const onSubmit: SubmitHandler<FormValues> = async (data) => {
     try {
       await sendMail(data);
       toast.success("Заявка отправлена!", {
         description: "Мы свяжемся с вами в ближайшее время.",
       });
       reset();
-    } catch (err) {
-      toast.error("Ошибка отправки", {
-        description: err.message || "Попробуйте позже или напишите нам напрямую.",
+    } catch (err: unknown) {
+      const message =
+        err instanceof Error
+          ? err.message
+          : "Please try again later or contact us directly.";
+      toast.error("Failed to send", {
+        description: message,
       });
     }
   };
@@ -213,7 +230,6 @@ export default function Form() {
       className="bg-[#2f5d3a] flex mt-14 justify-center md:py-20 md:px-10 py-10 px-4"
     >
       <div className="max-w-5xl w-full flex flex-col lg:flex-row justify-between items-start gap-10">
-
         {/* ── LEFT ─────────────────────────────────────────────────────────── */}
         <div className="max-w-full md:max-w-150 md:mt-5 text-white">
           <h1 className="relative text-3xl md:text-left sm:text-4xl lg:text-5xl lg:bottom-6 font-medium mb-5">
@@ -223,24 +239,48 @@ export default function Form() {
           </h1>
 
           <p className="relative text-sm font-light sm:text-lg lg:text-xl lg:bottom-6 text-white/80 leading-7 mb-9">
-            Совмещаем передовые агротехнологии и фермерский опыт, чтобы
-            повысить эффективность, качество продукции и устойчивость бизнеса.
+            Совмещаем передовые агротехнологии и фермерский опыт, чтобы повысить
+            эффективность, качество продукции и устойчивость бизнеса.
           </p>
 
           {/* Соцсети */}
           <div className="flex md:mt-14 md:justify-start justify-center items-center gap-9">
-            <a href="https://t.me/your_username" target="_blank" rel="noopener noreferrer">
-              <Image src="/Telegramm.svg" alt="Telegram" width={50} height={50}
+            <a
+              href="https://t.me/your_username"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Image
+                src="/Telegramm.svg"
+                alt="Telegram"
+                width={50}
+                height={50}
                 className="w-10 h-10 object-contain hover:scale-110 hover:-translate-y-2 transition-all duration-200 ease-in-out drop-shadow-lg"
               />
             </a>
-            <a href="https://wa.me/your_number" target="_blank" rel="noopener noreferrer">
-              <Image src="/Whatsapp.svg" alt="Whatsapp" width={50} height={50}
+            <a
+              href="https://wa.me/your_number"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Image
+                src="/Whatsapp.svg"
+                alt="Whatsapp"
+                width={50}
+                height={50}
                 className="w-10 h-10 object-contain hover:scale-110 hover:-translate-y-2 transition-all duration-200 ease-in-out drop-shadow-lg"
               />
             </a>
-            <a href="https://max.ru/u/ВАШ_ХЕШИ" target="_blank" rel="noopener noreferrer">
-              <Image src="/Max.svg" alt="Max" width={50} height={50}
+            <a
+              href="https://max.ru/u/ВАШ_ХЕШИ"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Image
+                src="/Max.svg"
+                alt="Max"
+                width={50}
+                height={50}
                 className="w-10 h-10 object-contain hover:scale-110 hover:-translate-y-2 transition-all duration-200 ease-in-out drop-shadow-lg"
               />
             </a>
@@ -256,19 +296,40 @@ export default function Form() {
           {/* Имя + Телефон */}
           <div className="flex flex-col sm:flex-row gap-4">
             <div className="w-full">
-              <input type="text" placeholder="Имя" {...register("name")} className={inputBase} />
-              {errors.name && <p className={errorText}>{errors.name.message}</p>}
+              <input
+                type="text"
+                placeholder="Имя"
+                {...register("name")}
+                className={inputBase}
+              />
+              {errors.name && (
+                <p className={errorText}>{errors.name.message}</p>
+              )}
             </div>
             <div className="w-full">
-              <input type="tel" placeholder="Номер тел." {...register("phone")} className={inputBase} />
-              {errors.phone && <p className={errorText}>{errors.phone.message}</p>}
+              <input
+                type="tel"
+                placeholder="Номер тел."
+                {...register("phone")}
+                className={inputBase}
+              />
+              {errors.phone && (
+                <p className={errorText}>{errors.phone.message}</p>
+              )}
             </div>
           </div>
 
           {/* Email */}
           <div>
-            <input type="email" placeholder="Электронная почта" {...register("email")} className={inputBase} />
-            {errors.email && <p className={errorText}>{errors.email.message}</p>}
+            <input
+              type="email"
+              placeholder="Электронная почта"
+              {...register("email")}
+              className={inputBase}
+            />
+            {errors.email && (
+              <p className={errorText}>{errors.email.message}</p>
+            )}
           </div>
 
           {/* Сообщение */}
@@ -279,7 +340,9 @@ export default function Form() {
               {...register("message")}
               className={`${inputBase} resize-none`}
             />
-            {errors.message && <p className={errorText}>{errors.message.message}</p>}
+            {errors.message && (
+              <p className={errorText}>{errors.message.message}</p>
+            )}
           </div>
 
           {/* ── Чекбокс ─────────────────────────────────────────────────────── */}
@@ -290,11 +353,18 @@ export default function Form() {
                   id="terms-checkbox"
                   name="terms"
                   checked={termsValue}
-                  onCheckedChange={(checked) => setValue("terms", checked === true, { shouldValidate: true })}
+                  onCheckedChange={(checked) =>
+                    setValue("terms", checked === true, {
+                      shouldValidate: true,
+                    })
+                  }
                   className="border-white/60 data-[state=checked]:bg-[#6fa773] data-[state=checked]:border-[#6fa773]"
                 />
                 <FieldContent>
-                  <FieldLabel htmlFor="terms-checkbox" className="text-white/90 text-sm font-normal cursor-pointer">
+                  <FieldLabel
+                    htmlFor="terms-checkbox"
+                    className="text-white/90 text-sm font-normal cursor-pointer"
+                  >
                     Принимаю условия обработки персональных данных,{" "}
                     <a
                       href="/privacy-policy"
@@ -308,7 +378,9 @@ export default function Form() {
                 </FieldContent>
               </Field>
             </FieldGroup>
-            {errors.terms && <p className={errorText}>{errors.terms.message}</p>}
+            {errors.terms && (
+              <p className={errorText}>{errors.terms.message}</p>
+            )}
           </div>
 
           {/* Кнопка */}

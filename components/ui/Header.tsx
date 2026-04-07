@@ -141,10 +141,10 @@ export default function Header() {
               </Link>
             </li>
           </ul>
-          <div className="relative flex bg-blue-500/0 justify-center items-center px-3">
+          <div className="relative flex bg-blue-500/0 drop-shadow-md/20 justify-center items-center px-3">
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
-                <Button variant="default" className="bg-accent rounded-full hover:shadow-lg/40 hover:-translate-y-1 px-5 text-base hover:text-gray-700  hover:bg-transparent hover:inset-ring-2 hover:inset-ring-accent ">Контакты</Button>
+                <Button variant="default" className="bg-accent rounded-full hover:shadow-lg/40 hover:-translate-y-1 px-5 text-base transition-all duration-300 ease-in-out hover:text-gray-700  hover:bg-transparent hover:inset-ring-2 hover:inset-ring-accent ">Контакты</Button>
               </DropdownMenuTrigger>
               <DropdownMenuContent>
                 <DropdownMenuItem>

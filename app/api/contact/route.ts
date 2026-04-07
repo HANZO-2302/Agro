@@ -1,4 +1,4 @@
-// app/api/contact/route.js
+// app/api/contact/route.ts
 // Зависимости: npm install nodemailer
 
 import nodemailer from "nodemailer";
@@ -12,16 +12,24 @@ import { NextResponse } from "next/server";
 const transporter = nodemailer.createTransport({
   host: "smtp.yandex.ru",
   port: 465,
-  secure: true,              // SSL
+  secure: true, // SSL
   auth: {
     user: process.env.YANDEX_USER,
     pass: process.env.YANDEX_PASS,
   },
 });
 
-export async function POST(request) {
+type ContactPayload = {
+  name: string;
+  phone: string;
+  email: string;
+  message: string;
+};
+
+export async function POST(request: Request) {
   try {
-    const { name, phone, email, message } = await request.json();
+    const { name, phone, email, message } =
+      (await request.json()) as ContactPayload;
 
     // Минимальная серверная валидация
     if (!name || !phone || !email || !message) {
@@ -53,8 +61,8 @@ export async function POST(request) {
     });
 
     return NextResponse.json({ success: true });
-  } catch (err) {
-    console.error("[contact] mail error:", JSON.stringify(err, Object.getOwnPropertyNames(err)));
+  } catch (err: unknown) {
+    console.error("[contact] mail error:", err);
     return NextResponse.json(
       { message: "Ошибка сервера, попробуйте позже" },
       { status: 500 }
