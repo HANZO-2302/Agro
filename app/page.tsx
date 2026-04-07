@@ -11,7 +11,7 @@ import SliderNews from "@/components/ui/SliderNews";
 
 export default function Home() {
   return (
-  <main className=" flex flex-col min-h-screen max-w-7xl overflow-hidden bg-[#F5F4EC] mx-auto shadow-2xl/90">
+  <div className=" flex flex-col min-h-screen max-w-7xl overflow-hidden bg-[#F5F4EC] mx-auto shadow-2xl/90">
     <Header /> 
     <Hero />
     <Services />
@@ -21,6 +21,6 @@ export default function Home() {
     <Form />
     <SliderNews />
     <Footer />
-  </main>
+  </div>
   );
 }

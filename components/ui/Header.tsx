@@ -1,21 +1,19 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  // DropdownMenuGroup,
-  DropdownMenuItem,
-  // DropdownMenuLabel,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
 import {
   CreditCardIcon,
   LogOutIcon,
   SettingsIcon,
   UserIcon,
 } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 
 import Image from "next/image";
 import { Inter, Outfit } from "next/font/google";
@@ -142,36 +140,33 @@ export default function Header() {
                 Projects
               </Link>
             </li>
-            
           </ul>
           <div className="relative flex bg-blue-500/0 justify-center items-center px-3">
-              <DropdownMenu>
-                <DropdownMenuTrigger asChild>
-                  <Button variant="default" className="rounded-full px-6 py-5 hover:bg-amber-600/0 hover:inset-ring-2 hover:inset-ring-[#2e5235] hover:text-[#2e5235]  ">
-                    Контакты
-                  </Button>
-                </DropdownMenuTrigger>
-                <DropdownMenuContent className=" duration-300 transition-transform">
-                  <DropdownMenuItem>
-                    <UserIcon />
-                    Profile
-                  </DropdownMenuItem>
-                  <DropdownMenuItem>
-                    <CreditCardIcon />
-                    Billing
-                  </DropdownMenuItem>
-                  <DropdownMenuItem>
-                    <SettingsIcon />
-                    Settings
-                  </DropdownMenuItem>
-                  <DropdownMenuSeparator />
-                  <DropdownMenuItem variant="destructive">
-                    <LogOutIcon />
-                    Log out
-                  </DropdownMenuItem>
-                </DropdownMenuContent>
-              </DropdownMenu>
-            </div>
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <Button variant="default" className="bg-accent rounded-full hover:shadow-lg/40 hover:-translate-y-1 px-5 text-base hover:text-gray-700  hover:bg-transparent hover:inset-ring-2 hover:inset-ring-accent ">Контакты</Button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent>
+                <DropdownMenuItem>
+                  <UserIcon />
+                  Profile
+                </DropdownMenuItem>
+                <DropdownMenuItem>
+                  <CreditCardIcon />
+                  Billing
+                </DropdownMenuItem>
+                <DropdownMenuItem>
+                  <SettingsIcon />
+                  Settings
+                </DropdownMenuItem>
+                <DropdownMenuSeparator />
+                <DropdownMenuItem variant="destructive">
+                  <LogOutIcon />
+                  Log out
+                </DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
+          </div>
         </nav>
 
         {/* Иконки  бургер меню */}
@@ -266,3 +261,4 @@ export default function Header() {
     // </main>
   );
 }
+

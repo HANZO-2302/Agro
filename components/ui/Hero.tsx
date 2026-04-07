@@ -16,16 +16,36 @@ export default function Hero() {
           <div className="flex flex-col md:flex-row bg-blue-600/0 justify-start max-w-3xl items-center py-4 gap-4">
             <div className="flex justify-center w-full h-18 bg-amber-300/0 items-center">
               <Button
-                className="h-18 w-full text-gray-50 rounded-full text-2xl hover:inset-ring-4 hover:inset-ring-[#2e5235] hover:text-[#2e5235]"
-                variant="default"
+                className="
+                  h-18 w-full rounded-full
+                 text-gray-50 
+                  text-[1.3rem]
+                  hover:bg-accent hover:-translate-y-1 hover:shadow-lg/40
+                  active:translate-y-0.5
+                  active:scale-[0.98]
+                  active:shadow-md/60
+                  transition-all duration-200 ease-in-out 
+                  shadow-lg 
+                  "
               >
                 Комплексные решения
               </Button>
             </div>
-            <div className="flex justify-center w-full h-18 px-1 bg-amber-300/0 items-center">
+            <div className="flex justify-center w-full items-center">
               <Button
-                className="h-18 w-full text-accent rounded-full font-semibold text-2xl bg-accent/0 inset-ring-4 inset-ring-accent hover:bg-accent hover:text-gray-50"
-                variant="outline"
+                className="h-18 w-full rounded-full 
+                font-semibold text-accent text-[1.3rem]  
+                bg-transparent shadow-lg 
+                border-0 inset-ring-2
+                hover:shadow-lg/40
+                hover:-translate-y-1 
+                hover:inset-ring-4
+                hover:bg-transparent 
+                active:translate-y-0.5
+                active:scale-[0.98]
+                active:shadow-md/60
+                transition-all duration-200 ease-in-out
+              "
               >
                 Наши технологии
               </Button>

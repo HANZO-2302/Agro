@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono, Inter } from "next/font/google";
 import "./globals.css";
 import { cn } from "@/lib/utils";
+import { Toaster } from "@/components/ui/sonner"
 
 const inter = Inter({subsets:['latin'],variable:'--font-sans'});
 
@@ -31,8 +32,8 @@ export default function RootLayout({
         suppressHydrationWarning
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        {children}
-        
+        <main>{children}</main>
+        <Toaster position="top-right" richColors />
       </body>
     </html>
   );

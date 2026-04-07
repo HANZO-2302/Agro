@@ -139,7 +139,7 @@ export default function Slider() {
                       </Button>
                     </DialogClose>
                     <DialogClose asChild>
-                      <Button className="text-accent inset-ring-2 inset-ring-accent bg-accent/0 hover:text-white hover:bg-accent duration-300 focus:outline-none">
+                      <Button className="text-accent inset-ring-2 inset-ring-accent bg-transparent hover:text-white hover:bg-accent duration-300 ">
                         Вернуться назад
                       </Button>
                     </DialogClose>
