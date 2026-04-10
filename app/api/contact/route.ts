@@ -64,7 +64,7 @@ export async function POST(request: Request) {
   } catch (err: unknown) {
     console.error("[contact] mail error:", err);
     return NextResponse.json(
-      { message: "Ошибка сервера, попробуйте позже" },
+      { message: "Ошибка сервера. Попробуйте позже. Если вы используете VPN, попробуйте его отключить." },
       { status: 500 }
     );
   }

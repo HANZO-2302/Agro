@@ -5,7 +5,7 @@ import { Slot } from "radix-ui";
 import { cn } from "@/lib/utils";
 
 const buttonVariants = cva(
-  "group/button inline-flex shrink-0 items-center justify-center text-gray-700 aria-expanded:text-gray-700 inset-ring-accent  hover:shadow-lg rounded-md focus-visible:inset-ring-2 aria-expanded:inset-ring-2 aria-expanded:scale-[0.98] aria-expanded:-translate-y-0.5 border-transparent bg-clip-padding text-sm font-medium  whitespace-nowrap transition-all outline-none select-none disabled:pointer-events-none disabled:opacity-50  aria-invalid:ring-3 aria-invalid:ring-destructive/50 dark:aria-invalid:border-destructive/50 dark:aria-invalid:ring-destructive/40 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
+  "group/button inline-flex shrink-0 items-center justify-center text-gray-700 aria-expanded:text-gray-700 inset-ring-accent  hover:shadow-lg rounded-md focus-visible:inset-ring-2 aria-expanded:inset-ring-2 border-transparent bg-clip-padding text-sm font-medium  whitespace-nowrap transition-all outline-none select-none disabled:pointer-events-none disabled:opacity-50  aria-invalid:ring-3 aria-invalid:ring-destructive/50 dark:aria-invalid:border-destructive/50 dark:aria-invalid:ring-destructive/40 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
   {
     variants: {
       variant: {

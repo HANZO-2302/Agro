@@ -126,11 +126,11 @@
 // }
 
 "use client";
-
+import { useState } from "react";
 import Image from "next/image";
 import { useForm, useWatch, type SubmitHandler } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { z } from "zod/v3";
+import { z } from "zod/v3"; // важно v3
 import { toast } from "sonner";
 import { Checkbox } from "@/components/ui/checkbox";
 import {
@@ -144,7 +144,7 @@ import {
 const schema = z.object({
   name: z
     .string()
-    .min(2, "Имя должно содержать минимум 2 символа")
+    .min(3, "Имя должно содержать минимум 3 символа")
     .max(50, "Имя слишком длинное"),
   phone: z
     .string()
@@ -201,8 +201,9 @@ export default function Form() {
   });
   // const termsValue = watch("terms");
   const termsValue = useWatch({ control, name: "terms" }) ?? false;
-
+  const [showSpinner, setShowSpinner] = useState(false);
   const onSubmit: SubmitHandler<FormValues> = async (data) => {
+    setShowSpinner(true);
     try {
       await sendMail(data);
       toast.success("Заявка отправлена!", {
@@ -214,15 +215,20 @@ export default function Form() {
         err instanceof Error
           ? err.message
           : "Please try again later or contact us directly.";
-      toast.error("Failed to send", {
+      toast.error("Не удалось отправить", {
         description: message,
       });
+    } finally {
+      // держим спиннер и текст ещё 1.5 секунды после ответа сервера
+      setTimeout(() => setShowSpinner(false), 300);
     }
   };
 
   const inputBase =
-    "w-full bg-gray-200 rounded-xl px-4 py-4 outline-none transition focus:ring-2 focus:ring-[#6fa773] placeholder:text-gray-500 text-gray-800";
-  const errorText = "text-red-300 text-xs mt-1 ml-1";
+    "w-full bg-gray-200 rounded-xl px-4 py-3 outline-none transition focus:ring-2 focus:ring-[#5e9463] placeholder:text-gray-500 text-gray-800";
+  // const errorText = "text-red-300 text-xs mt-1 ml-1";#6fa773
+  const errorText =
+    "text-red-300 text-[0.7rem] md:text-[0.5rem] ml-2 translate-y- h-1.5 block";
 
   return (
     <section
@@ -291,7 +297,7 @@ export default function Form() {
         <form
           onSubmit={handleSubmit(onSubmit)}
           noValidate
-          className="w-full lg:w-105 flex flex-col gap-4"
+          className="w-full lg:max-w-lg flex flex-col gap-2"
         >
           {/* Имя + Телефон */}
           <div className="flex flex-col sm:flex-row gap-4">
@@ -302,9 +308,7 @@ export default function Form() {
                 {...register("name")}
                 className={inputBase}
               />
-              {errors.name && (
-                <p className={errorText}>{errors.name.message}</p>
-              )}
+              <p className={errorText}>{errors.name?.message ?? ""}</p>
             </div>
             <div className="w-full">
               <input
@@ -313,9 +317,7 @@ export default function Form() {
                 {...register("phone")}
                 className={inputBase}
               />
-              {errors.phone && (
-                <p className={errorText}>{errors.phone.message}</p>
-              )}
+              <p className={errorText}>{errors.phone?.message ?? ""}</p>
             </div>
           </div>
 
@@ -327,9 +329,8 @@ export default function Form() {
               {...register("email")}
               className={inputBase}
             />
-            {errors.email && (
-              <p className={errorText}>{errors.email.message}</p>
-            )}
+
+            <p className={errorText}>{errors.email?.message ?? ""}</p>
           </div>
 
           {/* Сообщение */}
@@ -338,24 +339,33 @@ export default function Form() {
               placeholder="Опишите задачу"
               rows={4}
               {...register("message")}
-              className={`${inputBase} resize-none`}
+              className={`${inputBase} resize-none `}
             />
-            {errors.message && (
-              <p className={errorText}>{errors.message.message}</p>
-            )}
+            <p className={`${errorText} -mt-1.5 `}>
+              {errors.message?.message ?? " "}
+            </p>
           </div>
 
           {/* ── Чекбокс ─────────────────────────────────────────────────────── */}
-          <div>
+          <div className="ring-1 ring-white/40 rounded-lg px-3 py-2">
             <FieldGroup>
               <Field orientation="horizontal">
+                {/* <Checkbox
+                  id="terms-checkbox"
+                  name="terms"
+                  checked={termsValue}
+                  onCheckedChange={(checked) =>
+                    setValue("terms", checked === true)
+                  }
+                  className="border-white/60 data-[state=checked]:bg-[#6fa773] data-[state=checked]:border-[#6fa773]"
+                /> */}
                 <Checkbox
                   id="terms-checkbox"
                   name="terms"
                   checked={termsValue}
                   onCheckedChange={(checked) =>
                     setValue("terms", checked === true, {
-                      shouldValidate: true,
+                      shouldValidate: true, // ← вот это удалите
                     })
                   }
                   className="border-white/60 data-[state=checked]:bg-[#6fa773] data-[state=checked]:border-[#6fa773]"
@@ -363,14 +373,14 @@ export default function Form() {
                 <FieldContent>
                   <FieldLabel
                     htmlFor="terms-checkbox"
-                    className="text-white/90 text-sm font-normal cursor-pointer"
+                    className="text-white/70 text-[0.6rem] font-normal cursor-pointer"
                   >
-                    Принимаю условия обработки персональных данных,{" "}
+                    Принимаю условия обработки персональных данных.{" "}
                     <a
                       href="/privacy-policy"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="underline underline-offset-2 text-[#a8d5ac] hover:text-white transition-colors"
+                      className="underline underline-offset-2  font-extralight text-[0.6rem] text-[#a8d5ac] hover:text-white transition-colors"
                     >
                       Политика конфиденциальности
                     </a>
@@ -378,18 +388,48 @@ export default function Form() {
                 </FieldContent>
               </Field>
             </FieldGroup>
-            {errors.terms && (
-              <p className={errorText}>{errors.terms.message}</p>
-            )}
           </div>
 
-          {/* Кнопка */}
+          {/* <p className={`${errorText} ml-2 -translate-y-3.5`}>
+            {errors.terms?.message ?? ""}
+          </p> */}
+
           <button
             type="submit"
-            disabled={isSubmitting}
-            className="mt-2 bg-[#6fa773] hover:bg-[#5e9463] disabled:opacity-60 disabled:cursor-not-allowed text-white py-4 rounded-full text-base sm:text-lg transition"
+            disabled={isSubmitting || showSpinner || !termsValue}
+            className=" group mt-1 flex items-center justify-center bg-[#6fa773] hover:bg-[#5e9463] disabled:opacity-90 disabled:cursor-not-allowed text-white py-4 rounded-full text-base sm:text-lg transition"
           >
-            {isSubmitting ? "Отправляем..." : "Получить консультацию"}
+            <div className="relative flex items-center justify-center gap-2 bg-amber-500/0 px-9">
+              {/* Спиннер */}
+              <span
+                className={`flex w-5 h-5 border-2 border-white border-b-transparent border-t-transparent rounded-full animate-spin transition-opacity duration-300 ${
+                  showSpinner ? "opacity-100" : "opacity-0"
+                }`}
+              />
+
+              {/* Отправляем */}
+              <span
+                className={`absolute whitespace-nowrap transition-opacity duration-300 ${
+                  showSpinner ? "opacity-100" : "opacity-0"
+                }`}
+              >
+                Отправляем...
+              </span>
+              <span
+                className={`absolute whitespace-nowrap transition-opacity text-shadow-xs duration-300 ${
+                  showSpinner || !termsValue ? "opacity-0" : "opacity-100"
+                }`}
+              >
+                Получить консультацию
+              </span>
+              <span
+                className={`absolute whitespace-nowrap transition-opacity text-shadow-sm duration-300 ${
+                  !termsValue ? "opacity-100" : "opacity-0"
+                }`}
+              >
+                Нужно принять условия
+              </span>
+            </div>
           </button>
         </form>
       </div>
