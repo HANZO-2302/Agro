@@ -145,7 +145,8 @@ const schema = z.object({
   name: z
     .string()
     .min(3, "Имя должно содержать минимум 3 символа")
-    .max(50, "Имя слишком длинное"),
+    .max(50, "Имя слишком длинное")
+    .regex(/^[a-zA-Zа-яА-ЯёЁ\s]+$/, "Имя может содержать только буквы"),
   phone: z
     .string()
     .min(7, "Введите корректный номер телефона")
@@ -300,7 +301,7 @@ export default function Form() {
           className="w-full lg:max-w-lg flex flex-col gap-2"
         >
           {/* Имя + Телефон */}
-          <div className="flex flex-col sm:flex-row gap-4">
+          <div className="flex flex-col sm:flex-row gap-2 md:gap-3.5">
             <div className="w-full">
               <input
                 type="text"
@@ -347,7 +348,7 @@ export default function Form() {
           </div>
 
           {/* ── Чекбокс ─────────────────────────────────────────────────────── */}
-          <div className="ring-1 ring-white/40 rounded-lg px-3 py-2">
+          <div className="ring-1 mb-2 ring-white/40 rounded-lg p-3">
             <FieldGroup>
               <Field orientation="horizontal">
                 {/* <Checkbox
@@ -397,24 +398,26 @@ export default function Form() {
           <button
             type="submit"
             disabled={isSubmitting || showSpinner || !termsValue}
-            className=" group mt-1 flex items-center justify-center bg-[#6fa773] hover:bg-[#5e9463] disabled:opacity-90 disabled:cursor-not-allowed text-white py-4 rounded-full text-base sm:text-lg transition"
+            className=" group flex items-center justify-center bg-[#6fa773] hover:bg-[#5e9463] disabled:opacity-90 disabled:cursor-not-allowed text-white py-4 rounded-full text-base sm:text-lg transition"
           >
-            <div className="relative flex items-center justify-center gap-2 bg-amber-500/0 px-9">
+            <div className="flex items-center justify-center gap-2 ">
               {/* Спиннер */}
               <span
-                className={`flex w-5 h-5 border-2 border-white border-b-transparent border-t-transparent rounded-full animate-spin transition-opacity duration-300 ${
+                className={`w-5 h-5 border-2  border-white border-b-transparent border-t-transparent rounded-full animate-spin transition-opacity duration-300 ${
                   showSpinner ? "opacity-100" : "opacity-0"
                 }`}
               />
-
+              
               {/* Отправляем */}
               <span
-                className={`absolute whitespace-nowrap transition-opacity duration-300 ${
+                className={`whitespace-nowrap transition-opacity duration-300 ${
                   showSpinner ? "opacity-100" : "opacity-0"
                 }`}
               >
                 Отправляем...
               </span>
+              </div>
+              {/* Получить консультацию */}
               <span
                 className={`absolute whitespace-nowrap transition-opacity text-shadow-xs duration-300 ${
                   showSpinner || !termsValue ? "opacity-0" : "opacity-100"
@@ -422,6 +425,7 @@ export default function Form() {
               >
                 Получить консультацию
               </span>
+              {/* Нужно принять условия */}
               <span
                 className={`absolute whitespace-nowrap transition-opacity text-shadow-sm duration-300 ${
                   !termsValue ? "opacity-100" : "opacity-0"
@@ -429,7 +433,7 @@ export default function Form() {
               >
                 Нужно принять условия
               </span>
-            </div>
+            
           </button>
         </form>
       </div>
