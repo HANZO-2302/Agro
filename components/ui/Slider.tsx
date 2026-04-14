@@ -105,30 +105,31 @@ export default function Slider() {
                 <DialogTrigger asChild>
                   <button
                     // onClick={(e) => e.stopPropagation()}
-                    className="py-2 w-64 mb-8 bg-blue-600/0 text-[#2e5235] rounded-full hover:bg-[#2e5235] hover:text-white transition-colors ring-2  ring-offset-0 ring-[#2e5235] focus:outline-none"
+                    className="py-2 w-64 mb-8 bg-blue-600/0 text-[#2e5235] rounded-full hover:bg-[#2e5235] hover:text-white transition-colors ring-2 ring-offset-0 ring-[#2e5235] focus:outline-none"
                   >
                     Подробнее
                   </button>
                 </DialogTrigger>
-                <DialogContent className="sm:max-w-md bg-[#F5F4EC]">
+                <DialogContent className="sm:max-w-md bg-[#F5F4EC] ">
                   <DialogHeader>
-                    <DialogTitle className="p-3 mt-2 text-start font-bold text-sm">
+                    <DialogTitle className="p-6 bg-amber-500/0 text-start font-bold text-lg">
                       {card.title}
                     </DialogTitle>
-                    <div className="-mx-6 border-b border-gray-500"></div>
+                    {/* Разделитель */}
+                    <div className="w-full border-b border-gray-500"></div>
                     {/* Скролл-зона для описания */}
-                    <div className="mx-auto no-scrollbar max-h-[50vh] overflow-y-auto px-2">
-                      <DialogDescription className="text-sm leading-normal">
+                    <div className="no-scrollbar max-h-[50vh] overflow-y-auto px-6">
+                      <DialogDescription className="text-sm text-gray-700 leading-normal">
                         {card.desc}
                       </DialogDescription>
                     </div>
-                    <div className="-mx-6 border-b border-gray-500"></div>
+                    <div className="w-full border-b border-gray-500"></div>
                   </DialogHeader>
 
-                  <DialogFooter>
+                  <DialogFooter className="p-6">
                     <DialogClose asChild>
                       <Button
-                        className="text-white hover:bg-accent duration-300 focus:outline-none "
+                        className="text-white hover:bg-accent duration-300 p-4 focus:outline-none "
                         onClick={() => {
                           document
                             .getElementById("form")
@@ -139,7 +140,7 @@ export default function Slider() {
                       </Button>
                     </DialogClose>
                     <DialogClose asChild>
-                      <Button className="text-accent inset-ring-2 inset-ring-accent bg-transparent hover:text-white hover:bg-accent duration-300 ">
+                      <Button className="text-accent inset-ring-2 p-4 inset-ring-accent bg-transparent hover:text-white hover:bg-accent duration-300 ">
                         Вернуться назад
                       </Button>
                     </DialogClose>

@@ -59,7 +59,7 @@
   --secondary: oklch(0.967 0.001 286.375);
   --secondary-foreground: oklch(0.21 0.006 285.885);
   --muted: oklch(0.97 0 0);
-  --muted-foreground: oklch(0.556 0 0);
+  --muted-foreground: oklch(45.678% 0.00005 271.152);
   --accent: #2e5235;
   --accent-foreground: oklch(0.979 0.021 166.113);
   --destructive: oklch(0.577 0.245 27.325);
@@ -188,3 +188,4 @@
 .swiper-pagination-bullet-active {
   background: #2e5235 !important;
 }
+
