@@ -68,7 +68,7 @@ export default function Header() {
     >
       <div className="mx-auto flex max-w-5xl bg-amber-300/0 py-2 items-center justify-between px-8">
         <div className="flex items-center justify-center ">
-          {/* Логотип */}
+          {/* ── Логотип ────────────────────────────────────────────────────────────────────────────────────────────────────────────── */}
           <Image
             src="/logo.png"
             alt="logo Icon"
@@ -92,86 +92,177 @@ export default function Header() {
           </motion.div>
         </div>
 
-        {/* Меню для больших экранов */}
-        <nav className="relative hidden  font-semi md:flex md:items-center md:justify-center">
+        {/* ── Меню для больших экранов ────────────────────────────────────────────────────────────────────────────────────────────────────────────── */}
+        <nav className="relative hidden  font-semi lg:flex lg:items-center lg:justify-center">
           <ul className="flex space-x-5">
             <li className="overflow-hidden">
               <Link
                 href="/"
-                className={`relative inline-block py-[0.1em] text-gray-800 transition-all duration-300 before:absolute before:bottom-full before:h-0.5 before:w-full before:rounded-sm before:bg-[#2E5235] after:absolute after:bottom-full after:left-0 after:whitespace-nowrap after:text-gray-900 after:content-[attr(data-hover)] hover:translate-y-full dark:text-gray-400 dark:duration-300 dark:before:bg-blue-400 dark:after:text-gray-50  ? "translate-y-full" : ""}`}
-                data-hover="Home"
+                className={`" relative inline-block py-[0.1em] text-gray-800 transition-all duration-500 before:absolute before:bottom-full before:h-0.5 before:w-full before:rounded-sm before:bg-[#2E5235] after:absolute after:bottom-full after:left-0 after:whitespace-nowrap after:text-gray-900 after:content-[attr(data-hover)] hover:translate-y-full  ? "translate-y-full" : " "}`}
+                data-hover="Товары"
               >
-                Home
+                Товары
+              </Link>
+            </li>
+            <li className="overflow-hidden">
+              <Link
+                href="/"
+                className={`relative inline-block py-[0.1em] text-gray-800 transition-all duration-300 before:absolute before:bottom-full before:h-0.5 before:w-full before:rounded-sm before:bg-[#2E5235] after:absolute after:bottom-full after:left-0 after:whitespace-nowrap after:text-gray-900 after:content-[attr(data-hover)] hover:translate-y-full dark:text-gray-400 dark:duration-300 dark:before:bg-blue-400 dark:after:text-gray-50  ? "translate-y-full" : ""}`}
+                data-hover="Услуги"
+              >
+                Услуги
               </Link>
             </li>
             <li className="overflow-hidden">
               <Link
                 href="/ "
                 className={`" relative inline-block py-[0.1em] text-gray-800 transition-all duration-500 before:absolute before:bottom-full before:h-0.5 before:w-full before:rounded-sm before:bg-[#2E5235] after:absolute after:bottom-full after:left-0 after:whitespace-nowrap after:text-gray-900 after:content-[attr(data-hover)] hover:translate-y-full ? 'translate-y-full' : ' '}`}
-                data-hover="Contacts"
+                data-hover="Вопросы"
               >
-                Contacts
+                Вопросы
               </Link>
             </li>
             <li className="overflow-hidden">
               <Link
                 href="/"
                 className={`" relative inline-block py-[0.1em] text-gray-800 transition-all duration-500 before:absolute before:bottom-full before:h-0.5 before:w-full before:rounded-sm before:bg-[#2E5235] after:absolute after:bottom-full after:left-0 after:whitespace-nowrap after:text-gray-900 after:content-[attr(data-hover)] hover:translate-y-full  ? "translate-y-full" : " "}`}
-                data-hover="Projects"
+                data-hover="О компании"
               >
-                Projects
+                О компании
               </Link>
             </li>
+
             <li className="overflow-hidden">
               <Link
                 href="/"
                 className={`" relative inline-block py-[0.1em] text-gray-800 transition-all duration-500 before:absolute before:bottom-full before:h-0.5 before:w-full before:rounded-sm before:bg-[#2E5235] after:absolute after:bottom-full after:left-0 after:whitespace-nowrap after:text-gray-900 after:content-[attr(data-hover)] hover:translate-y-full  ? "translate-y-full" : " "}`}
-                data-hover="Projects"
+                data-hover="Новости"
               >
-                Projects
-              </Link>
-            </li>
-            <li className="overflow-hidden">
-              <Link
-                href="/"
-                className={`" relative inline-block py-[0.1em] text-gray-800 transition-all duration-500 before:absolute before:bottom-full before:h-0.5 before:w-full before:rounded-sm before:bg-[#2E5235] after:absolute after:bottom-full after:left-0 after:whitespace-nowrap after:text-gray-900 after:content-[attr(data-hover)] hover:translate-y-full  ? "translate-y-full" : " "}`}
-                data-hover="Projects"
-              >
-                Projects
+                Новости
               </Link>
             </li>
           </ul>
           <div className="relative flex bg-blue-500/0 drop-shadow-md/20 justify-center items-center px-3">
-            <DropdownMenu>
+            <DropdownMenu modal={false}>
               <DropdownMenuTrigger asChild>
-                <Button variant="default" className="bg-accent rounded-full hover:shadow-lg/40  px-5 text-base transition-all duration-300 ease-in-out hover:text-gray-700  hover:bg-transparent hover:inset-ring-2 hover:inset-ring-accent ">Контакты</Button>
+                <Button
+                  variant="default"
+                  className="bg-accent rounded-full hover:shadow-lg/40  px-5 text-base transition-all duration-300 ease-in-out hover:text-gray-700  hover:bg-transparent hover:inset-ring-2 hover:inset-ring-accent "
+                >
+                  Контакты
+                </Button>
               </DropdownMenuTrigger>
-              <DropdownMenuContent>
-                <DropdownMenuItem>
-                  <UserIcon />
-                  Profile
-                </DropdownMenuItem>
-                <DropdownMenuItem>
-                  <CreditCardIcon />
-                  Billing
-                </DropdownMenuItem>
-                <DropdownMenuItem>
-                  <SettingsIcon />
-                  Settings
-                </DropdownMenuItem>
-                <DropdownMenuSeparator />
-                <DropdownMenuItem variant="destructive">
-                  <LogOutIcon />
-                  Log out
-                </DropdownMenuItem>
+              <DropdownMenuContent className="max-w-sm w-full">
+                <div className="flex justify-start p-2  gap-2">
+                  <div className="w-15 h-15 bg-amber-700 rounded-sm overflow-hidden">
+                    <Image
+                      src="/D.png"
+                      alt="SEO Icon"
+                      width={80}
+                      height={80}
+                      priority
+                      className="w-full h-full object-cover scale-110"
+                    />
+                  </div>
+                  <div>
+                    <DropdownMenuItem className="flex flex-col justify-start -space-y-2.5 items-start">
+                      {/* <UserIcon /> */}
+                      <h1 className="text-sm font-bold text-gray-900">
+                        Генеральный Директор
+                      </h1>
+                      <h2 className="text-xs font-medium text-gray-900">
+                        Борисов Сергей Владимирович
+                      </h2>
+                      <p className="text-xs font-medium text-gray-900">
+                        +7 (495) 123-45-67
+                      </p>
+                    </DropdownMenuItem>
+                  </div>
+                </div>
+                <div className="flex justify-start p-2  gap-2">
+                  <div className="w-15 h-15 bg-amber-700 rounded-sm overflow-hidden">
+                    <Image
+                      src="/A.jpg"
+                      alt="SEO Icon"
+                      width={80}
+                      height={80}
+                      priority
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                  <div>
+                    <DropdownMenuItem className="flex flex-col justify-start -space-y-2.5 items-start">
+                      {/* <UserIcon /> */}
+                      <h1 className="text-sm font-bold text-gray-900">
+                        Менеджер
+                      </h1>
+                      <h2 className="text-xs font-medium text-gray-900">
+                        Анна Владимировна
+                      </h2>
+                      <p className="text-xs font-medium text-gray-900">
+                        +7 (495) 123-45-67
+                      </p>
+                    </DropdownMenuItem>
+                  </div>
+                </div>
+                <div className="flex justify-start p-2  gap-2">
+                  <div className="w-15 h-15 bg-amber-700 rounded-sm overflow-hidden">
+                    <Image
+                      src="/K.png"
+                      alt="SEO Icon"
+                      width={80}
+                      height={80}
+                      priority
+                      className="w-full h-full object-cover scale-130"
+                    />
+                  </div>
+                  <div>
+                    <DropdownMenuItem className="flex flex-col justify-start -space-y-2.5 items-start">
+                      {/* <UserIcon /> */}
+                      <h1 className="text-sm font-bold text-gray-900">
+                        Менеджер
+                      </h1>
+                      <h2 className="text-xs font-medium text-gray-900">
+                        Кирилл Федорович
+                      </h2>
+                      <p className="text-xs font-medium text-gray-900">
+                        +7 (495) 123-45-67
+                      </p>
+                    </DropdownMenuItem>
+                  </div>
+                </div>
+                <div className="flex justify-start p-2  gap-2">
+                  <div className="w-15 h-15 bg-amber-700 rounded-sm overflow-hidden">
+                    <Image
+                      src="/S.png"
+                      alt="SEO Icon"
+                      width={80}
+                      height={80}
+                      priority
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                  <div>
+                    <DropdownMenuItem className="flex flex-col justify-start -space-y-2.5 items-start">
+                      {/* <UserIcon /> */}
+                      <h1 className="text-sm font-bold text-gray-900">Склад</h1>
+                      <h2 className="text-xs font-medium text-gray-900">
+                        Иван Сергеевич
+                      </h2>
+                      <p className="text-xs font-medium text-gray-900">
+                        +7 (495) 123-45-67
+                      </p>
+                    </DropdownMenuItem>
+                  </div>
+                </div>
               </DropdownMenuContent>
             </DropdownMenu>
           </div>
         </nav>
 
-        {/* Иконки  бургер меню */}
+        {/* ── Бургер меню для маленьких экранов ────────────────────────────────────────────────────────────────────────────────────────────────────────────── */}
         <button
-          className="relative block focus:outline-none md:hidden"
+          className="relative block focus:outline-none lg:hidden"
           aria-label={isOpen ? "Close menu" : "Open menu"}
           aria-expanded={isOpen}
           onClick={toggleMenu}
@@ -200,7 +291,7 @@ export default function Header() {
         </button>
       </div>
 
-      {/* Выпадающее меню для маленьких экранов */}
+      {/* ──  Выпадающее меню для маленьких экранов ────────────────────────────────────────────────────────────────────────────────────────────────────────────── */}
       <AnimatePresence>
         {isOpen && (
           <motion.nav
@@ -209,7 +300,7 @@ export default function Header() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.3, ease: "easeInOut" }}
-            className={`absolute z-50 flex h-screen w-full justify-center bg-[#2E5235] select-none ${outfit.className} antialiased md:hidden`}
+            className={`absolute z-50 flex h-screen w-full justify-center bg-[#2E5235] select-none ${outfit.className} antialiased lg:hidden`}
             role="dialog"
           >
             <motion.ul
@@ -261,4 +352,3 @@ export default function Header() {
     // </main>
   );
 }
-

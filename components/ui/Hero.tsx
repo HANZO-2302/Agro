@@ -47,7 +47,7 @@ export default function Hero() {
                 transition-all duration-200 ease-in-out
               "
               >
-                Наши технологии
+                Наши преимущества
               </Button>
             </div>
           </div>
