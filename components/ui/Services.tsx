@@ -46,7 +46,7 @@ export default function Services() {
         {services.map((service, index) => (
           <div
             key={index}
-            className="bg-white w-full h-72 shadow-[0_0_15px_rgba(0,0,0,0.1)] rounded-2xl flex flex-col justify-center items-center transition-all duration-300 group"
+            className="bg-white w-full h-72 shadow-md border border-black/10 rounded-2xl flex flex-col justify-center items-center transition-all duration-300 group"
           >
             <div className="text-amber-600 mb-4 group-hover:scale-110 transition-transform duration-300">
               <Image

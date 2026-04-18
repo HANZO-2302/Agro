@@ -90,7 +90,7 @@ export default function Slider() {
         {CardDialog.map((card, index) => (
           <SwiperSlide
             key={index}
-            className="flex! justify-center mt-2 mb-8 rounded-2xl items-center text-center shadow-[0_0_12px_rgba(0,0,0,0.1)] text-lg bg-white"
+            className="flex! justify-center mt-2 mb-8 rounded-2xl items-center text-center shadow-md border border-black/10 text-lg bg-white"
           >
             <div className="flex flex-col items-center py-2">
               <Image

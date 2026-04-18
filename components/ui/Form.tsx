@@ -600,6 +600,7 @@ export default function Form() {
         md:p-10 
         xl:p-20
         flex justify-center
+        shadow-md border border-black/10
       "
     >
       <div className="
@@ -610,7 +611,7 @@ export default function Form() {
         ">
         {/* ── LEFT ─────────────────────────────────────────────────────────── */}
         <div className="w-full text-white">
-          <h1 className="relative text-4xl md:text-3xl  text-center md:text-left lg:mt-5 lg:text-5xl lg:bottom-6 font-bold mb-5">
+          <h1 className="relative text-3xl  text-center md:text-left lg:mt-5 lg:text-5xl lg:bottom-6 font-bold mb-5">
             Технологичные решения <br />
             для современного <br />
             молочного хозяйства

@@ -2,10 +2,10 @@ import Image from "next/image";
 
 export default function About() {
   return (
-    <section className="bg-white w-full shadow-[0_0_15px_rgba(0,0,0,0.1)] py-10 px-4 lg:px-8">
+    <section className="bg-white w-full shadow-md border border-black/10 py-8 px-4 lg:px-8">
       <div className="max-w-7xl mx-auto">
         {/* Заголовок */}
-        <h1 className="uppercase text-center md:text-left font-bold text-4xl mb-10">О компании</h1>
+        <h1 className="uppercase text-center md:text-left font-bold text-4xl mb-5">О компании</h1>
 
         {/* Контент */}
         <div className="flex flex-col lg:flex-row gap-10 lg:gap-16 items-start">
@@ -22,8 +22,8 @@ export default function About() {
 
           {/* Текст */}
           <div className="w-full lg:w-1/2">
-            <h2 className="font-bold text-3xl lg:text-4xl leading-tight mb-6">
-              Ваша эффективность — наша формула.
+            <h2 className="font-bold text-2xl text-start leading-tight mb-6">
+              ТАГРИС: Комплексные решения — доказанная эффективность.
             </h2>
 
             <p className="text-gray-700 text-base leading-relaxed mb-4">
