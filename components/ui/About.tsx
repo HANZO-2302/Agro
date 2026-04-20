@@ -10,13 +10,13 @@ export default function About() {
         {/* Контент */}
         <div className="flex flex-col lg:flex-row gap-10 lg:gap-16 items-start">
           {/* Картинка */}
-          <div className="w-full lg:w-1/2">
+          <div className="w-full lg:w-1/2 overflow-hidden rounded-2xl border border-black/40 shadow-md">
             <Image
               src="/about.png"
               alt="About Image"
-              width={700}
+              width={500}
               height={500}
-              className="w-full h-full object-cover rounded-2xl shadow-md"
+              className="w-full h-full scale-105 object-cover "
             />
           </div>
 
