@@ -101,7 +101,7 @@ export default function Slider() {
                 className="object-cover p-5 w-full h-90 "
               />
 
-              <Dialog>
+              <Dialog >
                 <DialogTrigger asChild>
                   <button
                     // onClick={(e) => e.stopPropagation()}
@@ -130,11 +130,7 @@ export default function Slider() {
                     <DialogClose asChild>
                       <Button
                         className="text-white hover:bg-accent duration-300 p-4 focus:outline-none "
-                        onClick={() => {
-                          document
-                            .getElementById("form")
-                            ?.scrollIntoView({ behavior: "smooth" });
-                        }}
+                       
                       >
                         Заказать
                       </Button>

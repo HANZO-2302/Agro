@@ -2,9 +2,10 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono, Inter } from "next/font/google";
 import "./globals.css";
 import { cn } from "@/lib/utils";
-import { Toaster } from "@/components/ui/sonner"
+import { Toaster } from "@/components/ui/sonner";
+// import Header from "@/components/ui/Header";
 
-const inter = Inter({subsets:['latin'],variable:'--font-sans'});
+const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -18,7 +19,8 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "ТАГРИС — Надёжный производитель",
-  description: "ТАГРИС — прямой производитель оборудования и продукции с доставкой по России и за рубеж. Высокое качество по ГОСТ, низкие цены от производителя.",
+  description:
+    "ТАГРИС — прямой производитель оборудования и продукции с доставкой по России и за рубеж. Высокое качество по ГОСТ, низкие цены от производителя.",
 };
 
 export default function RootLayout({
@@ -27,11 +29,16 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html suppressHydrationWarning lang="en" className={cn("font-sans", inter.variable)}>
+    <html
+      suppressHydrationWarning
+      lang="en"
+      className={cn("font-sans", inter.variable)}
+    >
       <body
         suppressHydrationWarning
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
+        {/* <Header /> */}
         <main>{children}</main>
         <Toaster position="top-right" richColors />
       </body>

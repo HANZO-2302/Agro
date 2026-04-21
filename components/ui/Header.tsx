@@ -14,12 +14,16 @@ import { Inter, Outfit } from "next/font/google";
 import { useState, useRef } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "motion/react";
+import gsap from "gsap";
+import { ScrollToPlugin } from "gsap/ScrollToPlugin";
 import {
   RiCloseLine,
   RiMenuLine,
   RiTimeLine,
   RiMapPin2Line,
 } from "@remixicon/react";
+
+gsap.registerPlugin(ScrollToPlugin);
 
 const outfit = Outfit({
   variable: "--font-outfit",
@@ -31,28 +35,22 @@ const inter = Inter({
 });
 // для мобильного ссылки
 const menuItems = [
-  { href: "/", text: "Home", icon: "/home.svg" },
-  { href: "/contacts", text: "Contacts", icon: "/contacts.svg" },
-  { href: "/projects/figma", text: "Figma", icon: "/figma.svg" },
-  { href: "/projects/photoshop", text: "Photoshop", icon: "/photoshop.svg" },
-  {
-    href: "/projects/after",
-    text: "After Effects",
-    icon: "/after_effects.svg",
-  },
-  {
-    href: "/projects/illustrator",
-    text: "Tagris website",
-    icon: "/illustrator.svg",
-  },
-  {
-    href: "/projects/lightroom",
-    text: "RobotTech website",
-    icon: "/lightroom.svg",
-  },
+  { href: "#slider", text: "Товары", icon: "/figma.svg", anchor: true },
+  { href: "#services", text: "Услуги", anchor: true },
+  { href: "#faq", text: "Вопросы", anchor: true },
+  { href: "#about", text: "О компании", anchor: true },
+  { href: "#news", text: "Новости", anchor: true },
 ];
 
 export default function Header() {
+  const goTo = (id: string) => {
+    gsap.to(window, {
+      duration: 1,
+      scrollTo: { y: id, offsetY: 70, autoKill: true },
+      ease: "power4.inOut",
+    });
+  };
+
   const [isOpen, setIsOpen] = useState(false);
   const menuRef = useRef<HTMLElement>(null);
 
@@ -63,26 +61,42 @@ export default function Header() {
   return (
     // <main className="relative flex justify-center items-center min-h-screen max-w-7xl md:rounded-xl bg-[#F5F4EC] mx-auto">
     <header
-      className={`fixed left-1/2 top-0 -translate-x-1/2 z-10 bg-gray-100/80 backdrop-blur-xs shadow-[#2E5235] shadow-xs/50 w-full max-w-7xl  ${inter.className} antialiased`}
+      className={`fixed z-10 bg-gray-100/80 backdrop-blur-xs shadow-[#2E5235] shadow-xs/50 w-full max-w-7xl  ${inter.className} antialiased`}
     >
-      <div className="mx-auto flex max-w-4xl  bg-amber-300/0 py-2 items-center gap-4 justify-between px-5">
+      <div className="mx-auto flex max-w-5xl  bg-amber-300/0 py-2 items-center gap-4 justify-between px-5">
         {/* ── Логотип ────────────────────────────────────────────────────────────────────────────────────────────────────────────── */}
         <div className="flex items-center justify-center bg-amber-700/0">
-          <Image
-            src="/logo.png"
-            alt="logo Icon"
-            // quality={20}
-            // fill={true} // {true} | {false}
-            width={64}
-            height={64}
-            priority
-            loading="eager" // {lazy} | {eager}
-            className="w-15 h-15"
-          />
+          <Link
+            href="#hero"
+            onClick={(e) => {
+              e.preventDefault();
+              goTo("#hero");
+            }}
+          >
+            <Image
+              src="/logo.png"
+              alt="logo Icon"
+              // quality={20}
+              // fill={true} // {true} | {false}
+              width={64}
+              height={64}
+              priority
+              loading="eager" // {lazy} | {eager}
+              className="w-15 h-15"
+            />
+          </Link>
 
           {/* ТАГРИС */}
           <h1 className="text-[1.3rem] md:text-[2rem] leading-4.5 font-extrabold text-[#2E5235] ">
-            <Link href="/">ТАГРИС</Link>
+            <Link
+              href="#hero"
+              onClick={(e) => {
+                e.preventDefault();
+                goTo("#hero");
+              }}
+            >
+              ТАГРИС
+            </Link>
           </h1>
         </div>
 
@@ -91,7 +105,11 @@ export default function Header() {
           <ul className="flex space-x-5">
             <li className="overflow-hidden">
               <Link
-                href="/"
+                href="#slider"
+                onClick={(e) => {
+                  e.preventDefault();
+                  goTo("#slider");
+                }}
                 className={`" relative inline-block py-[0.2em] text-gray-800 transition-all duration-500 before:absolute before:bottom-full before:h-0.5 before:w-full before:rounded-sm before:bg-[#2E5235] after:absolute after:bottom-full after:left-0 after:whitespace-nowrap after:text-gray-900 after:content-[attr(data-hover)] hover:translate-y-full  ? "translate-y-full" : " "}`}
                 data-hover="Товары"
               >
@@ -100,7 +118,11 @@ export default function Header() {
             </li>
             <li className="overflow-hidden">
               <Link
-                href="/"
+                href="#services"
+                onClick={(e) => {
+                  e.preventDefault();
+                  goTo("#services");
+                }}
                 className={`relative inline-block py-[0.1em] text-gray-800 transition-all duration-300 before:absolute before:bottom-full before:h-0.5 before:w-full before:rounded-sm before:bg-[#2E5235] after:absolute after:bottom-full after:left-0 after:whitespace-nowrap after:text-gray-900 after:content-[attr(data-hover)] hover:translate-y-full dark:text-gray-400 dark:duration-300 dark:before:bg-blue-400 dark:after:text-gray-50  ? "translate-y-full" : ""}`}
                 data-hover="Услуги"
               >
@@ -109,7 +131,11 @@ export default function Header() {
             </li>
             <li className="overflow-hidden">
               <Link
-                href="/ "
+                href="#faq"
+                onClick={(e) => {
+                  e.preventDefault();
+                  goTo("#faq");
+                }}
                 className={`" relative inline-block py-[0.1em] text-gray-800 transition-all duration-500 before:absolute before:bottom-full before:h-0.5 before:w-full before:rounded-sm before:bg-[#2E5235] after:absolute after:bottom-full after:left-0 after:whitespace-nowrap after:text-gray-900 after:content-[attr(data-hover)] hover:translate-y-full ? 'translate-y-full' : ' '}`}
                 data-hover="Вопросы"
               >
@@ -118,7 +144,11 @@ export default function Header() {
             </li>
             <li className="overflow-hidden">
               <Link
-                href="/"
+                href="#about"
+                onClick={(e) => {
+                  e.preventDefault();
+                  goTo("#about");
+                }}
                 className={`" relative inline-block py-[0.1em] text-gray-800 transition-all duration-500 before:absolute before:bottom-full before:h-0.5 before:w-full before:rounded-sm before:bg-[#2E5235] after:absolute after:bottom-full after:left-0 after:whitespace-nowrap after:text-gray-900 after:content-[attr(data-hover)] hover:translate-y-full  ? "translate-y-full" : " "}`}
                 data-hover="О компании"
               >
@@ -128,7 +158,11 @@ export default function Header() {
 
             <li className="overflow-hidden">
               <Link
-                href="/"
+                href="#news"
+                onClick={(e) => {
+                  e.preventDefault();
+                  goTo("#news");
+                }}
                 className={`" relative inline-block py-[0.1em] text-gray-800 transition-all duration-500 before:absolute before:bottom-full before:h-0.5 before:w-full before:rounded-sm before:bg-[#2E5235] after:absolute after:bottom-full after:left-0 after:whitespace-nowrap after:text-gray-900 after:content-[attr(data-hover)] hover:translate-y-full  ? "translate-y-full" : " "}`}
                 data-hover="Новости"
               >
@@ -138,7 +172,7 @@ export default function Header() {
           </ul>
           <div className="relative flex bg-blue-500/0 drop-shadow-md/20 justify-center items-center px-3">
             {/* если добавить в <DropdownMenu modal={false}> включает скрол*/}
-            <DropdownMenu modal={false}>
+            <DropdownMenu>
               <DropdownMenuTrigger asChild>
                 <Button
                   variant="default"
@@ -147,7 +181,7 @@ export default function Header() {
                   Контакты
                 </Button>
               </DropdownMenuTrigger>
-              <DropdownMenuContent className="max-w-sm w-full backdrop-blur-lg bg-gray-300/40 -translate-x-1 xl:translate-x-10 translate-y-5">
+              <DropdownMenuContent className="max-w-sm w-full backdrop-blur-lg bg-gray-300/40 -translate-x-1 xl:-translate-x-6 translate-y-5">
                 <div className="flex justify-start p-2 gap-2">
                   <div className="w-15 h-15 rounded-sm overflow-hidden border border-black/20 shadow-md">
                     <Image
@@ -454,7 +488,22 @@ export default function Header() {
                 >
                   <Link
                     href={item.href}
-                    onClick={() => setTimeout(() => setIsOpen(false), 300)}
+                    onClick={(e) => {
+                      if (item.anchor) {
+                        e.preventDefault();
+                        setIsOpen(false);
+                        // Даём меню закрыться, потом скроллим
+                        setTimeout(() => {
+                          gsap.to(window, {
+                            duration: 1,
+                            scrollTo: { y: item.href, offsetY: 70 },
+                            ease: "power2.inOut",
+                          });
+                        }, 350);
+                      } else {
+                        setTimeout(() => setIsOpen(false), 300);
+                      }
+                    }}
                     className="flex h-20 w-full items-center justify-start"
                   >
                     {item.text}

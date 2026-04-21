@@ -44,7 +44,7 @@ export default function Advantages() {
             <h3 className="text-2xl font-bold text-center px-4 mb-3 text-gray-800">
               {service.title}
             </h3>
-            <p className="text-sm text-gray-600 text-center line-clamp-3 bg-amber-500/0 px-4">
+            <p className="text-sm text-wrap text-gray-600 text-center  bg-amber-500/0 px-6">
               {service.desc}
             </p>
           </div>

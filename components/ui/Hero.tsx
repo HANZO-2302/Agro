@@ -1,5 +1,10 @@
-// import HeroText from "./hero_text";
+"use client"
+import { gsap } from "gsap";
+import { ScrollToPlugin } from "gsap/ScrollToPlugin";
 import { Button } from "@/components/ui/button";
+import Link from "next/link";
+
+gsap.registerPlugin(ScrollToPlugin);
 
 export default function Hero() {
   return (
@@ -16,23 +21,41 @@ export default function Hero() {
           <div className="flex flex-col md:flex-row bg-blue-600/0 justify-start max-w-3xl items-center md:px-9 py-4 gap-4">
             <div className="flex justify-center w-full h-18 bg-amber-300/0 items-center">
               <Button
+                asChild
+                onClick={(e) => {
+                  e.preventDefault();
+                  gsap.to(window, {
+                    duration: 1,
+                    scrollTo: { y: "#about", offsetY: 70 },
+                    ease: "power2.inOut",
+                  });
+                }}
                 className="
-                  h-18 w-full rounded-full
-                 text-gray-50 
-                  text-[1.3rem]
-                  hover:bg-accent hover:-translate-y-1 hover:shadow-lg/40
-                  active:translate-y-0.5
-                  active:scale-[0.98]
-                  active:shadow-md/60
-                  transition-all duration-200 ease-in-out 
-                  shadow-lg 
-                  "
+    h-18 w-full rounded-full
+    text-gray-50 
+    text-[1.3rem]
+    hover:bg-accent hover:-translate-y-1 hover:shadow-lg/40
+    active:translate-y-0.5
+    active:scale-[0.98]
+    active:shadow-md/60
+    transition-all duration-200 ease-in-out 
+    shadow-lg 
+  "
               >
-                Комплексные решения
+                <Link href="#about">Комплексные решения</Link>
               </Button>
             </div>
             <div className="flex justify-center w-full items-center">
               <Button
+              asChild
+                onClick={(e) => {
+                  e.preventDefault();
+                  gsap.to(window, {
+                    duration: 1,
+                    scrollTo: { y: "#advantages", offsetY: 70 },
+                    ease: "power2.inOut",
+                  });
+                }}
                 className="h-18 w-full rounded-full 
                 font-semibold text-accent text-[1.3rem]  
                 bg-transparent shadow-lg 
@@ -46,8 +69,8 @@ export default function Hero() {
                 active:shadow-md/60
                 transition-all duration-200 ease-in-out
               "
-              >
-                Наши преимущества
+              ><Link href="#advantages">Наши преимущества</Link>
+              
               </Button>
             </div>
           </div>

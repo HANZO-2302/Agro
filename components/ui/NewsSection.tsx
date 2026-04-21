@@ -23,7 +23,7 @@ export default function NewsSection() {
   ];
 
   return (
-    <section className="max-w-6xl mx-auto mt-15 mb-10 w-full px-4  bg-[#1faac2]/0 ">
+    <section className="max-w-6xl mx-auto mt-10 mb-10 w-full px-4  bg-[#1faac2]/0 ">
       <h2 className="relative uppercase text-center text-4xl px-4 font-bold bg-blue-500/0 mb-5">
         Новости
       </h2>

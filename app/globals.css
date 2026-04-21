@@ -117,14 +117,18 @@
 
 @layer base {
   * body {
-    @apply bg-background text-foreground;
+    @apply bg-background;
   }
   html {
     @apply font-sans;
+    /* scrollbar-gutter: stable; */
+    /* overflow-y: scroll; */
   }
-
+ 
+  
   ::-webkit-scrollbar {
-    width: 10px;
+    width: 8px;
+    /* display: none; */
   }
   ::-webkit-scrollbar-track {
     background: #363636;
