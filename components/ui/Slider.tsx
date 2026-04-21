@@ -1,6 +1,6 @@
 "use client";
 import Image from "next/image";
-import Link from "next/link";
+// import Link from "next/link";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
@@ -17,6 +17,9 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import { Button } from "./button";
+import { gsap } from "gsap";
+import { ScrollToPlugin } from "gsap/ScrollToPlugin";
+gsap.registerPlugin(ScrollToPlugin);
 
 const CardDialog = [
   {
@@ -129,18 +132,16 @@ export default function Slider() {
                   <DialogFooter className="p-6">
                     <DialogClose asChild>
                       <Button
-                        asChild
-                        onClick={(e) => {
-                          e.preventDefault();
+                        className="text-white hover:bg-accent duration-300 p-4 focus:outline-none"
+                        onClick={() => {
                           gsap.to(window, {
                             duration: 1,
                             scrollTo: { y: "#form", offsetY: 70 },
                             ease: "power2.inOut",
                           });
                         }}
-                        className="text-white hover:bg-accent duration-300 p-4 focus:outline-none "
                       >
-                        <Link href="#form">Заказать</Link>
+                        Заказать
                       </Button>
                     </DialogClose>
                     <DialogClose asChild>
