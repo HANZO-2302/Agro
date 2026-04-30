@@ -1,6 +1,5 @@
 "use client";
 import Image from "next/image";
-// import Link from "next/link";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
@@ -51,7 +50,7 @@ const CardDialog = [
 export default function Slider() {
   return (
     <>
-      <h1 className="relative uppercase text-center top-3 text-4xl px-4 font-bold bg-blue-500/0 ">
+      <h1 className="relative uppercase text-center top-3 text-3xl px-4 font-bold bg-blue-500/0 ">
         популярные товары
       </h1>
       <Swiper

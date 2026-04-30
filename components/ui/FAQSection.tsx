@@ -91,7 +91,7 @@ export default function FAQSection() {
           transition={{ duration: 0.3 }}
           className="text-center mb-5"
         >
-          <h2 className="text-4xl md:text-4xl uppercase font-bold ">
+          <h2 className="text-3xl uppercase font-bold ">
             Частые вопросы
           </h2>
            <p className="text-gray-800 text-lg py-1 font-normal leading-6 md:leading-8 md:text-2xl text-center max-w-5xl mx-auto">

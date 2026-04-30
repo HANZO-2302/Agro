@@ -1,6 +1,6 @@
 import Image from "next/image";
 import * as motion from "motion/react-client";
-import Link from "next/link";
+import a from "next/link";
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
@@ -33,7 +33,7 @@ export default function Footer() {
 
           {/* ТАГРИС */}
           <h1 className="text-3xl leading-4.5 font-extrabold text-[#2E5235] ">
-            <Link href="/">ТАГРИС</Link>
+            <a href="/">ТАГРИС</a>
           </h1>
         </div>
         {/* ── Social networks ─────────────────────────────────────────────────────── */}

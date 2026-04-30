@@ -21,8 +21,8 @@ export default function Advantages() {
   ];
 
   return (
-    <div className="relative overflow-hidden  w-full max-w-7xl bg-amber-400/0 py-15 px-0 ">
-      <h1 className="text-center uppercase text-4xl font-bold bg-blue-500/0 mb-5">
+    <div className="relative overflow-hidden  w-full max-w-7xl bg-amber-400/0 py-15 ">
+      <h1 className="text-center uppercase text-3xl font-bold px-4 bg-blue-500/0 mb-5">
         наши преимущества
       </h1>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-x-6 px-4 lg:px-16 gap-y-6">

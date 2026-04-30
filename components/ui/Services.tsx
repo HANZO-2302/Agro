@@ -39,7 +39,7 @@ export default function Services() {
 
   return (
     <div className="relative overflow-hidden w-full max-w-7xl bg-amber-400/0 py-10 px-0 ">
-      <h1 className="text-center text-4xl font-bold bg-blue-500/0 mb-5">
+      <h1 className="text-center text-3xl font-bold bg-blue-500/0 mb-5">
         МЫ ПРЕДЛАГАЕМ
       </h1>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-x-6 px-4 lg:px-16 gap-y-6">

@@ -12,7 +12,6 @@ import {
 import Image from "next/image";
 import { Inter, Outfit } from "next/font/google";
 import { useState, useRef } from "react";
-import Link from "next/link";
 import { motion, AnimatePresence } from "motion/react";
 import gsap from "gsap";
 import { ScrollToPlugin } from "gsap/ScrollToPlugin";
@@ -66,7 +65,7 @@ export default function Header() {
       <div className="mx-auto flex max-w-5xl  bg-amber-300/0 py-2 items-center gap-4 justify-between px-5">
         {/* ── Логотип ────────────────────────────────────────────────────────────────────────────────────────────────────────────── */}
         <div className="flex items-center justify-center bg-amber-700/0">
-          <Link
+          <a
             href="#hero"
             onClick={(e) => {
               e.preventDefault();
@@ -84,11 +83,11 @@ export default function Header() {
               loading="eager" // {lazy} | {eager}
               className="w-15 h-15"
             />
-          </Link>
+          </a>
 
           {/* ТАГРИС */}
           <h1 className="text-[1.3rem] md:text-[2rem] leading-4.5 font-extrabold text-[#2E5235] ">
-            <Link
+            <a
               href="#hero"
               onClick={(e) => {
                 e.preventDefault();
@@ -96,7 +95,7 @@ export default function Header() {
               }}
             >
               ТАГРИС
-            </Link>
+            </a>
           </h1>
         </div>
 
@@ -104,7 +103,7 @@ export default function Header() {
         <nav className="relative hidden font-semi lg:flex lg:items-center lg:justify-center bg-amber-700/0">
           <ul className="flex space-x-5">
             <li className="overflow-hidden">
-              <Link
+              <a
                 href="#slider"
                 onClick={(e) => {
                   e.preventDefault();
@@ -114,10 +113,10 @@ export default function Header() {
                 data-hover="Товары"
               >
                 Товары
-              </Link>
+              </a>
             </li>
             <li className="overflow-hidden">
-              <Link
+              <a
                 href="#services"
                 onClick={(e) => {
                   e.preventDefault();
@@ -127,10 +126,10 @@ export default function Header() {
                 data-hover="Услуги"
               >
                 Услуги
-              </Link>
+              </a>
             </li>
             <li className="overflow-hidden">
-              <Link
+              <a
                 href="#faq"
                 onClick={(e) => {
                   e.preventDefault();
@@ -140,10 +139,10 @@ export default function Header() {
                 data-hover="Вопросы"
               >
                 Вопросы
-              </Link>
+              </a>
             </li>
             <li className="overflow-hidden">
-              <Link
+              <a
                 href="#about"
                 onClick={(e) => {
                   e.preventDefault();
@@ -153,11 +152,11 @@ export default function Header() {
                 data-hover="О компании"
               >
                 О компании
-              </Link>
+              </a>
             </li>
 
             <li className="overflow-hidden">
-              <Link
+              <a
                 href="#news"
                 onClick={(e) => {
                   e.preventDefault();
@@ -167,7 +166,7 @@ export default function Header() {
                 data-hover="Новости"
               >
                 Новости
-              </Link>
+              </a>
             </li>
           </ul>
           <div className="relative flex bg-blue-500/0 drop-shadow-md/20 justify-center items-center px-3">
@@ -486,7 +485,7 @@ export default function Header() {
                   }}
                   className="relative flex w-full border-b border-green-200/30 text-center text-2xl text-gray-50"
                 >
-                  <Link
+                  <a
                     href={item.href}
                     onClick={(e) => {
                       if (item.anchor) {
@@ -507,7 +506,7 @@ export default function Header() {
                     className="flex h-20 w-full items-center justify-start"
                   >
                     {item.text}
-                  </Link>
+                  </a>
                 </motion.li>
               ))}
 

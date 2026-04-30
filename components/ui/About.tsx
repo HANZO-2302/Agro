@@ -5,7 +5,7 @@ export default function About() {
     <section className="bg-white w-full shadow-md border border-black/10 py-8 px-4 lg:px-8">
       <div className="max-w-7xl mx-auto">
         {/* Заголовок */}
-        <h1 className="uppercase text-center md:text-left font-bold text-4xl mb-5">О компании</h1>
+        <h1 className="uppercase text-center md:text-left font-bold text-3xl mb-5">О компании</h1>
 
         {/* Контент */}
         <div className="flex flex-col lg:flex-row gap-10 lg:gap-16 items-start">
