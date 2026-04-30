@@ -9,7 +9,7 @@ gsap.registerPlugin(ScrollToPlugin);
 export default function Hero() {
   return (
     <section id="hero">
-      <div className="hero relative flex justify-center max-h-205 h-screen w-full bg-[url('/hero.webp')] bg-no-repeat shadow-xs/80">
+      <div className="hero relative flex justify-center max-h-205 h-screen w-full md:bg-[url('/hero.webp')]  bg-[url('/heroM.webp')] bg-no-repeat shadow-xs/80">
         {/* Видео фон */}
         <video
           className="absolute top-0 left-0 w-full h-full object-cover"
