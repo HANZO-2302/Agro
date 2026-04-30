@@ -800,7 +800,7 @@ export default function Form() {
                                 безопасности, предпринимаемые
                                 <strong>
                                   {" "}
-                                  Меняйловым Игорем Игоревичем
+                                  Ивановым Иваном Ивановичем
                                 </strong>{" "}
                                 (далее — Оператор).
                               </p>
@@ -815,7 +815,7 @@ export default function Form() {
                                   которую Оператор может получить о посетителях
                                   веб-сайта{" "}
                                   <span className="text-blue-600">
-                                    https://www.igormeniailov.ru/
+                                    https://www.my-site.ru/
                                   </span>
                                   .
                                 </li>
@@ -877,10 +877,10 @@ export default function Form() {
                                 любой момент отозвать свое согласие, направив
                                 письмо на электронную почту:{" "}
                                 <a
-                                  href="mailto:m2302835@yandex.ru"
+                                  href="mailto:mail@yandex.ru"
                                   className="text-blue-600 underline"
                                 >
-                                  m2302835@yandex.ru
+                                  mail@yandex.ru
                                 </a>
                                 .
                               </p>
@@ -888,11 +888,11 @@ export default function Form() {
                             <footer className="pt-4 border-t border-gray-200 space-y-2">
                               <p className="text-xs text-gray-500">
                                 Актуальная версия Политики доступна по адресу:
-                                https://www.igormeniailov.ru/
+                                https://www.my-site.ru/
                               </p>
                               <div className="text-sm text-gray-700 font-medium pt-2">
-                                <p>Оператор: Меняйлов Игорь Игоревич</p>
-                                <p>Контактный адрес: m2302835@yandex.ru</p>
+                                <p>Оператор: Иванов Иван Иванович</p>
+                                <p>Контактный адрес: mail@yandex.ru</p>
                               </div>
                             </footer>
                           </div>
