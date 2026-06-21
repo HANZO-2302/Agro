@@ -1,6 +1,6 @@
 import Image from "next/image";
 import * as motion from "motion/react-client";
-import a from "next/link";
+import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
@@ -33,7 +33,7 @@ export default function Footer() {
 
           {/* ТАГРИС */}
           <h1 className="text-3xl leading-4.5 font-extrabold text-[#2E5235] ">
-            <a href="/">ТАГРИС</a>
+            <Link href="/">ТАГРИС</Link>
           </h1>
         </div>
         {/* ── Social networks ─────────────────────────────────────────────────────── */}
@@ -137,7 +137,7 @@ export default function Footer() {
                       требованиями Федерального закона от 27.07.2006. №152-ФЗ «О
                       персональных данных» и определяет порядок обработки и меры
                       по обеспечению безопасности, предпринимаемые
-                      <strong> Меняйловым Игорем Игоревичем</strong> (далее —
+                      <strong> Ивановым Иваном Ивановичем</strong> (далее —
                       Оператор).
                     </p>
                     <ul className="list-disc pl-5 mt-2 space-y-1">
@@ -149,7 +149,7 @@ export default function Footer() {
                         Политика применяется ко всей информации, которую
                         Оператор может получить о посетителях веб-сайта{" "}
                         <span className="text-blue-600">
-                          https://www.igormeniailov.ru/
+                          https://www.my-site.ru/
                         </span>
                         .
                       </li>
@@ -204,10 +204,10 @@ export default function Footer() {
                       момент отозвать свое согласие, направив письмо на
                       электронную почту:{" "}
                       <a
-                        href="mailto:m2302835@yandex.ru"
+                        href="mailto:mail@yandex.ru"
                         className="text-blue-600 underline"
                       >
-                        m2302835@yandex.ru
+                        mail@yandex.ru
                       </a>
                       .
                     </p>
@@ -215,11 +215,11 @@ export default function Footer() {
                   <footer className="pt-4 border-t border-gray-200 space-y-2">
                     <p className="text-xs text-gray-500">
                       Актуальная версия Политики доступна по адресу:
-                      https://www.igormeniailov.ru/
+                      https://www.my-site.ru/
                     </p>
                     <div className="text-sm text-gray-700 font-medium pt-2">
-                      <p>Оператор: Меняйлов Игорь Игоревич</p>
-                      <p>Контактный адрес: m2302835@yandex.ru</p>
+                      <p>Оператор: Иванов Иван Иванович</p>
+                      <p>Контактный адрес: mail@yandex.ru</p>
                     </div>
                   </footer>
                 </div>
@@ -238,7 +238,9 @@ export default function Footer() {
               </DialogFooter>
             </DialogContent>
           </Dialog>
-          <h2 className="font-normal text-sm leading-5">©2026 Все права защищены</h2>
+          <h2 className="font-normal text-sm leading-5">
+            ©2026 Все права защищены
+          </h2>
         </div>
       </div>
     </div>
