@@ -17,7 +17,7 @@ export default function Footer() {
   return (
     <div className="px-4 overflow-hidden w-full mt-9 max-w-7xl bg-accent/0 ">
       <div className=" max-w-5xl w-full mx-auto border-t-2 border-gray-500 "></div>
-      <div className="p-4 mt-8 mb-8 flex flex-col sm:flex-row justify-center items-center gap-2 md:gap-4 lg:gap-8  ">
+      <div className="p-4 mt-8 flex flex-col sm:flex-row justify-center items-center gap-2 md:gap-4 lg:gap-8  ">
         {/* ── Logo ─────────────────────────────────────────────────────── */}
         <div className="flex justify-center items-center shrink-0 gap-3 p-2">
           <Image
@@ -242,6 +242,21 @@ export default function Footer() {
             ©2026 Все права защищены
           </h2>
         </div>
+      </div>
+      <div className="flex justify-center items-center shrink-0 ">
+        <a
+          href="https://www.google.com/search?q=hanzo"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <Image
+            src="/ByHanzo.webp"
+            alt="Hanzo"
+            width={100}
+            height={100}
+            className="w-25 pb-13 object-contain  drop-shadow-lg"
+          />
+        </a>
       </div>
     </div>
   );
