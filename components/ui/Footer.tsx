@@ -245,7 +245,7 @@ export default function Footer() {
       </div>
       <div className="flex justify-center items-center shrink-0 ">
         <a
-          href="https://www.google.com/search?q=hanzo"
+          href="https://hanzo23.vercel.app/"
           target="_blank"
           rel="noopener noreferrer"
         >
@@ -254,7 +254,7 @@ export default function Footer() {
             alt="Hanzo"
             width={100}
             height={100}
-            className="w-25 pb-13 object-contain  drop-shadow-lg"
+            className="w-25 pb-13 drop-shadow-lg"
           />
         </a>
       </div>
