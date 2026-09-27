@@ -94,7 +94,7 @@ export default function Header() {
                 goTo("#hero");
               }}
             >
-              ТАГРИС
+              БАГРИС
             </a>
           </h1>
         </div>
@@ -356,7 +356,7 @@ export default function Header() {
                   <div className="flex flex-col items-start gap-2">
                     {/* Адрес */}
                     <a
-                      href="https://yandex.ru/maps/213/moscow/house/ulitsa_plekhanova_4a/Z04YcQJmT00CQFtvfXt0dXlrZw==/?ll=37.749990%2C55.758015&z=14.03"
+                      href="https://yandex.ru/maps/213/moscow/house/ulitsa_plekhanova_4/Z04YcQJmT00CQFtvfXt0dXlrZw==/?ll=37.749990%2C5.758015&z=14.03"
                       target="_blank"
                       rel="noopener noreferrer"
                     >
@@ -371,7 +371,7 @@ export default function Header() {
                           <p className="text-xs text-gray-700 leading-normal tracking-widest">
                             111123, Москва,
                             <br />
-                            ул. Плеханова, 4а
+                            ул. Блеханова, 4
                           </p>
                         </div>
                         <div className="w-15 h-15 rounded-sm ml-5 overflow-hidden border border-black/20 shadow-md">
@@ -646,7 +646,7 @@ export default function Header() {
                           <p className="text-xs text-white/90 leading-normal tracking-widest">
                             111123, Москва,
                             <br />
-                            ул. Плеханова, 4а
+                            ул. Блеханова, 4
                           </p>
                         </div>
                       </div>

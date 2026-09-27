@@ -11,14 +11,14 @@ export default function Hero() {
     <section id="hero">
       <div className="hero relative flex justify-center max-h-205 h-screen w-full md:bg-[url('/hero.webp')]  bg-[url('/heroM.webp')] bg-no-repeat shadow-xs/80">
         {/* Видео фон */}
-        <video
+        {/* <video
           className="absolute top-0 left-0 w-full h-full object-cover"
           src="/grok-video-c2c1b311-ce86-4272-938a-03c69dbe4805.mp4"
           autoPlay
           muted
           loop
           playsInline
-        />
+        /> */}
         <div className="absolute flex flex-col justify-center bg-amber-700/0 mt-24 w-full max-w-5xl lg:py-12 px-4">
           <h1 className="leading-8 font-bold text-[#2E5235] text-left md:px-9 md:leading-13 text-[1.7rem] md:text-[2.4rem] lg:text-[2.9rem]">
             Комплексные решения <br />
