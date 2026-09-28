@@ -33,7 +33,7 @@ export default function Footer() {
 
           {/* ТАГРИС */}
           <h1 className="text-3xl leading-4.5 font-extrabold text-[#2E5235] ">
-            <Link href="/">ТАГРИС</Link>
+            <Link href="/">БАГРИС</Link>
           </h1>
         </div>
         {/* ── Social networks ─────────────────────────────────────────────────────── */}
