@@ -13,7 +13,7 @@ import Slider from "@/components/ui/Slider";
 export default function Home() {
   return (
     // {/* <SmoothProvider> */}
-    <div className=" flex flex-col min-h-screen max-w-7xl overflow-hidden bg-[#F5F4EC] mx-auto shadow-2xl/90">
+    <div className=" flex flex-col min-h-screen max-w-7xl overflow-hidden bg-[#2f5d3a] mx-auto shadow-2xl/90">
       <Header />
       <section id="hero">
         <Hero />
